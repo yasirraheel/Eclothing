@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Premium Daraz-style clothing e-commerce admin dashboard" />
+  <title>Clothia Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-card">
+      <div class="loading-logo">C</div>
+      <div>
+        <h1>Clothia Dashboard</h1>
+        <p>Preparing your store insights...</p>
+      </div>
+      <div class="loading-bar"><span></span></div>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">C</div>
+        <div>
+          <h2>Clothia</h2>
+          <p>Admin Panel</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active">Dashboard</a>
+        <a href="#">Orders</a>
+        <a href="#">Products</a>
+        <a href="#">Customers</a>
+        <a href="#">Analytics</a>
+        <a href="#">Coupons</a>
+        <a href="#">Inventory</a>
+        <a href="#">Settings</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="store-card">
+          <span>Store Performance</span>
+          <strong>92.4%</strong>
+          <small>This week</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button mobile-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
+        <div class="logo-area">
+          <div class="logo-mark">C</div>
+          <div>
+            <strong>Clothia Store</strong>
+            <span>Premium Clothing Dashboard</span>
+          </div>
+        </div>
+
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="text" placeholder="Search products, orders, customers..." />
+        </div>
+
+        <div class="topbar-actions">
+          <button class="icon-button" aria-label="Notifications">🔔</button>
+          <button class="profile-button" aria-label="Profile">
+            <span>A</span>
+            <strong>Admin</strong>
+          </button>
+        </div>
+      </header>
+
+      <section class="hero-panel reveal">
+        <div>
+          <p class="eyebrow">Daraz-style Ecommerce Control Center</p>
+          <h1>Fashion sales, stock, and profit tracking in one clean view.</h1>
+          <p class="hero-copy">Monitor total products, sales growth, and inventory movement with a modern orange-and-white interface built for fast decision-making.</p>
+        </div>
+        <div class="hero-badge-group">
+          <div class="mini-badge"><strong>Live Orders</strong><span>128</span></div>
+          <div class="mini-badge"><strong>Return Rate</strong><span>2.4%</span></div>
+          <div class="mini-badge"><strong>Fulfillment</strong><span>98%</span></div>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card reveal">
+          <div class="stat-icon orange">👕</div>
+          <div class="stat-copy">
+            <span>Total Products</span>
+            <strong>2500</strong>
+            <small>Available in stock</small>
+          </div>
+          <div class="stat-glow"></div>
+        </article>
+
+        <article class="stat-card reveal">
+          <div class="stat-icon green">📈</div>
+          <div class="stat-copy">
+            <span>Total Sales</span>
+            <strong>Rs. 850,000</strong>
+            <small class="positive">+18.6% vs last month</small>
+          </div>
+          <div class="trend-arrow">↗</div>
+        </article>
+
+        <article class="stat-card reveal">
+          <div class="stat-icon yellow">◔</div>
+          <div class="stat-copy">
+            <span>Profit Percentage</span>
+            <strong>35%</strong>
+            <small>Healthy margin growth</small>
+          </div>
+          <div class="progress-ring" data-percent="35">
+            <div class="progress-ring-inner">
+              <span>35%</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="stat-card reveal">
+          <div class="stat-icon red">📦</div>
+          <div class="stat-copy">
+            <span>Stock Details</span>
+            <strong>2,500 / 1,800 / 700</strong>
+            <small>Total • Sold • Remaining</small>
+          </div>
+          <div class="stock-bar-wrap">
+            <div class="stock-bar">
+              <span class="stock-sold"></span>
+              <span class="stock-remaining"></span>
+            </div>
+            <div class="stock-labels">
+              <span>Sold</span>
+              <span>Remaining</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="analytics-grid">
+        <article class="panel reveal">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Weekly sales chart</p>
+              <h2>Sales Overview</h2>
+            </div>
+            <span class="panel-chip">This Week</span>
+          </div>
+          <div class="chart-card">
+            <svg viewBox="0 0 640 280" class="chart-svg" aria-label="Weekly sales chart">
+              <defs>
+                <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#f57224" />
+                  <stop offset="100%" stop-color="#ff9b4a" />
+                </linearGradient>
+                <linearGradient id="fillGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(245,114,36,0.28)" />
+                  <stop offset="100%" stop-color="rgba(245,114,36,0.02)" />
+                </linearGradient>
+              </defs>
+              <g class="grid-lines"></g>
+              <path id="salesArea" class="chart-area" d="" />
+              <path id="salesLine" class="chart-line" d="" />
+              <g id="salesPoints"></g>
+            </svg>
+          </div>
+        </article>
+
+        <article class="panel reveal">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Monthly revenue chart</p>
+              <h2>Revenue Growth</h2>
+            </div>
+            <span class="panel-chip success">Trending Up</span>
+          </div>
+          <div class="chart-card">
+            <div class="bar-chart" id="revenueBars"></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="products-section reveal">
+        <div class="panel-head compact">
+          <div>
+            <p class="panel-kicker">Top selling clothes</p>
+            <h2>Featured Products</h2>
+          </div>
+          <span class="panel-chip">Best Sellers</span>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+          <article class="product-card" data-name="Classic Denim Jacket">
+            <div class="product-image denim">DJ</div>
+            <div class="product-content">
+              <h3>Classic Denim Jacket</h3>
+              <p>Rs. 3,400</p>
+              <span class="stock-pill in-stock">In Stock</span>
+              <button class="buy-button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Oversized Cotton Tee">
+            <div class="product-image tee">OT</div>
+            <div class="product-content">
+              <h3>Oversized Cotton Tee</h3>
+              <p>Rs. 1,250</p>
+              <span class="stock-pill low-stock">Low Stock</span>
+              <button class="buy-button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Slim Fit Trouser">
+            <div class="product-image trouser">SF</div>
+            <div class="product-content">
+              <h3>Slim Fit Trouser</h3>
+              <p>Rs. 2,100</p>
+              <span class="stock-pill in-stock">In Stock</span>
+              <button class="buy-button">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Summer Hoodie">
+            <div class="product-image hoodie">SH</div>
+            <div class="product-content">
+              <h3>Summer Hoodie</h3>
+              <p>Rs. 2,850</p>
+              <span class="stock-pill out-stock">Out of Stock</span>
+              <button class="buy-button" disabled>Add to Cart</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
