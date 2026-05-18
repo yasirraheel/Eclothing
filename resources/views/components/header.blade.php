@@ -31,6 +31,13 @@
         <a href="{{ route('cart.index') }}" class="cart-icon">
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="cart-label">Cart</span>
+            @php
+                $cart = session('cart', []);
+                $cartCount = array_sum(array_column($cart, 'quantity'));
+            @endphp
+            @if($cartCount > 0)
+                <span class="cart-count">{{ $cartCount }}</span>
+            @endif
         </a>
     </div>
 </div>

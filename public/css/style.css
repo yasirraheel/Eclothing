@@ -266,6 +266,26 @@ body {
     background: transparent;
 }
 
+/* Cart count badge */
+.cart-count {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #F85606;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    line-height: 1;
+    border: 2px solid var(--amz-header);
+}
+
 /* Auth links */
 .auth-links {
     display: flex;
