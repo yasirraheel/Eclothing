@@ -47,6 +47,7 @@ Route::get('/product/{id}', function ($id) {
 })->name('frontend.product');
 
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/count', [\App\Http\Controllers\CartController::class, 'count'])->name('cart.count');
 Route::post('/cart/add/{id}', [\App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
 Route::patch('/cart/update', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/remove', [\App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');

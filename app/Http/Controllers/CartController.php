@@ -16,6 +16,16 @@ class CartController extends Controller
         return view('cart', compact('cart', 'setting', 'customerCarePages', 'darazPages'));
     }
 
+    public function count()
+    {
+        $cart = session()->get('cart', []);
+        $cartCount = 0;
+        foreach($cart as $item) {
+            $cartCount += $item['quantity'] ?? 0;
+        }
+        return response()->json(['count' => $cartCount]);
+    }
+
     public function add(Request $request, $id)
     {
         $product = \App\Models\Product::findOrFail($id);

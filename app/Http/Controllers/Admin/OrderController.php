@@ -59,14 +59,16 @@ class OrderController extends Controller
 
         $oldStatus = $order->status;
         $newStatus = $request->status;
+        $oldPaymentStatus = $order->payment_status;
+        $newPaymentStatus = $request->payment_status;
 
         $order->update([
             'status'         => $request->status,
             'payment_status' => $request->payment_status,
         ]);
 
-        // Send email notification if status changed
-        if ($oldStatus !== $newStatus) {
+        // Send email notification if status or payment status changed
+        if ($oldStatus !== $newStatus || $oldPaymentStatus !== $newPaymentStatus) {
             try {
                 $order->load('user', 'items');
                 if ($order->customer_email) {
