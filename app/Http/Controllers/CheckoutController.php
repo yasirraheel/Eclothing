@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderPlaced;
+use App\Mail\NewOrderAdmin;
 
 class CheckoutController extends Controller
 {
@@ -68,6 +71,24 @@ class CheckoutController extends Controller
         }
 
         session()->forget('cart');
+        
+        // Send email to customer
+        try {
+            Mail::to($order->customer_email)->send(new OrderPlaced($order));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send order confirmation email: ' . $e->getMessage());
+        }
+        
+        // Send email to admin
+        try {
+            $setting = \App\Models\Setting::first();
+            if ($setting && $setting->email) {
+                Mail::to($setting->email)->send(new NewOrderAdmin($order));
+            }
+        } catch (\Exception $e) {
+            \Log::error('Failed to send admin notification email: ' . $e->getMessage());
+        }
+        
         return redirect()->route('orders.index')->with('success', 'Order placed successfully! Order Number: ' . $order->order_number);
     }
 }
