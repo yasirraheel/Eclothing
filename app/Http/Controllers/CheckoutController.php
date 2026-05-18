@@ -72,9 +72,14 @@ class CheckoutController extends Controller
 
         session()->forget('cart');
         
+        // Load user relationship for email
+        $order->load('user', 'items');
+        
         // Send email to customer
         try {
-            Mail::to($order->customer_email)->send(new OrderPlaced($order));
+            if ($order->customer_email) {
+                Mail::to($order->customer_email)->send(new OrderPlaced($order));
+            }
         } catch (\Exception $e) {
             \Log::error('Failed to send order confirmation email: ' . $e->getMessage());
         }

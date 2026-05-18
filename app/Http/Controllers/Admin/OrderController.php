@@ -68,7 +68,10 @@ class OrderController extends Controller
         // Send email notification if status changed
         if ($oldStatus !== $newStatus) {
             try {
-                Mail::to($order->customer_email)->send(new OrderStatusChanged($order, $oldStatus, $newStatus));
+                $order->load('user', 'items');
+                if ($order->customer_email) {
+                    Mail::to($order->customer_email)->send(new OrderStatusChanged($order, $oldStatus, $newStatus));
+                }
             } catch (\Exception $e) {
                 \Log::error('Failed to send order status change email: ' . $e->getMessage());
             }
