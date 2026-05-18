@@ -33,7 +33,10 @@
             <span class="cart-label">Cart</span>
             @php
                 $cart = session('cart', []);
-                $cartCount = array_sum(array_column($cart, 'quantity'));
+                $cartCount = 0;
+                foreach($cart as $item) {
+                    $cartCount += $item['quantity'] ?? 0;
+                }
             @endphp
             @if($cartCount > 0)
                 <span class="cart-count">{{ $cartCount }}</span>
