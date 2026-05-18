@@ -67,15 +67,28 @@ class OrderController extends Controller
             'payment_status' => $request->payment_status,
         ]);
 
-        // Send email notification if status or payment status changed
-        if ($oldStatus !== $newStatus || $oldPaymentStatus !== $newPaymentStatus) {
+        // Load user relationship for emails
+        $order->load('user', 'items');
+
+        // Send email notification if order status changed
+        if ($oldStatus !== $newStatus) {
             try {
-                $order->load('user', 'items');
                 if ($order->customer_email) {
                     Mail::to($order->customer_email)->send(new OrderStatusChanged($order, $oldStatus, $newStatus));
                 }
             } catch (\Exception $e) {
                 \Log::error('Failed to send order status change email: ' . $e->getMessage());
+            }
+        }
+
+        // Send email notification if payment status changed
+        if ($oldPaymentStatus !== $newPaymentStatus) {
+            try {
+                if ($order->customer_email) {
+                    Mail::to($order->customer_email)->send(new \App\Mail\PaymentStatusChanged($order, $oldPaymentStatus, $newPaymentStatus));
+                }
+            } catch (\Exception $e) {
+                \Log::error('Failed to send payment status change email: ' . $e->getMessage());
             }
         }
 
