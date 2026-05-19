@@ -726,15 +726,27 @@ body {
 
 /* Back to top */
 .back-to-top {
-    background: #37475A; text-align: center;
-    padding: 14px 0; cursor: pointer;
-    color: #DDD; font-size: 18px;
-    transition: background 0.2s;
+    background: #37475A; 
+    text-align: center;
+    padding: 16px 0; 
+    cursor: pointer;
+    color: #fff; 
+    font-size: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
-.back-to-top:hover { background: #485769; }
+.back-to-top:hover { 
+    background: #485769;
+    transform: translateY(-2px);
+}
 .back-to-top i {
-    font-size: 18px;
+    font-size: 20px;
     vertical-align: middle;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.back-to-top:hover i {
+    transform: translateY(-3px);
 }
 
 /* Footer social */
