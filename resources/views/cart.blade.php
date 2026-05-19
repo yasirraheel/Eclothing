@@ -234,7 +234,7 @@
 
     <!-- Footer -->
     <div class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <i class="fa-solid fa-arrow-up"></i> Back to top
+        <i class="fa-solid fa-arrow-up"></i>
     </div>
     <div class="footer">
         <div class="container footer-grid">
