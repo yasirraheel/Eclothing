@@ -131,7 +131,9 @@
         </div>
     </div>
 
-    <div class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</div>
+    <div class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fa-solid fa-arrow-up"></i> Back to top
+    </div>
     <div class="footer">
         <div class="container footer-grid">
             <div class="footer-col">

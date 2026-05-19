@@ -239,7 +239,9 @@
     </div>
 
     <!-- Back to Top -->
-    <div class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</div>
+    <div class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fa-solid fa-arrow-up"></i> Back to top
+    </div>
 
     <!-- Footer -->
     <div class="footer">

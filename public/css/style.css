@@ -85,8 +85,9 @@ body {
     line-height: 40px;
     border-bottom: 3px solid #febd69;
     box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-    position: relative;
-    z-index: 50;
+    position: sticky;
+    top: 60px;
+    z-index: 99;
     margin-bottom: 4px;
 }
 
