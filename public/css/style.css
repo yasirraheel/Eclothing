@@ -728,10 +728,14 @@ body {
 .back-to-top {
     background: #37475A; text-align: center;
     padding: 14px 0; cursor: pointer;
-    color: #DDD; font-size: 13px;
+    color: #DDD; font-size: 18px;
     transition: background 0.2s;
 }
 .back-to-top:hover { background: #485769; }
+.back-to-top i {
+    font-size: 18px;
+    vertical-align: middle;
+}
 
 /* Footer social */
 .footer-social {
