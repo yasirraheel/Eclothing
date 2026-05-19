@@ -811,6 +811,8 @@ body {
 
 /* --- Mobile landscape / small tablet --- */
 @media (max-width: 768px) {
+    body { padding-top: 150px; }
+    
     /* Header: logo + cart on top row, search below */
     .header {
         flex-wrap: wrap;
@@ -942,6 +944,7 @@ body {
 
 /* --- Mobile portrait --- */
 @media (max-width: 480px) {
+    body { padding-top: 140px; }
     .container { padding-left: 10px; padding-right: 10px; }
 
     /* Header: compact but touch-friendly */
