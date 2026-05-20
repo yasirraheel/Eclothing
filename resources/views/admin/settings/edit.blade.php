@@ -95,6 +95,19 @@
                             <input type="file" id="logo" name="logo" class="form-control" accept="image/*">
                         </div>
                         <div class="form-group">
+                            <label for="monogram" class="form-label">Monogram/Icon</label>
+                            @if(isset($setting->monogram) && $setting->monogram)
+                                <div style="margin-bottom: 10px;">
+                                    <img src="{{ asset('storage/' . $setting->monogram) }}" alt="Monogram" style="height: 50px;">
+                                </div>
+                            @endif
+                            <input type="file" id="monogram" name="monogram" class="form-control" accept="image/*">
+                            <small class="form-text text-muted">Upload a small icon/monogram for mobile view</small>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-2">
+                        <div class="form-group">
                             <label for="favicon" class="form-label">Favicon</label>
                             @if(isset($setting->favicon) && $setting->favicon)
                                 <div style="margin-bottom: 10px;">
@@ -103,6 +116,7 @@
                             @endif
                             <input type="file" id="favicon" name="favicon" class="form-control" accept="image/x-icon,image/png">
                         </div>
+                        <div class="form-group"></div>
                     </div>
                 </div>
 
