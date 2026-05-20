@@ -243,11 +243,6 @@
         <i class="fa-solid fa-arrow-up"></i>
     </div>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/923001234567" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
     <!-- Footer -->
     <div class="footer">
         <div class="container footer-grid">
