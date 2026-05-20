@@ -22,7 +22,6 @@ class SettingController extends Controller
             'site_phone' => 'nullable|string|max:255',
             'site_address' => 'nullable|string',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'monogram' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'favicon' => 'nullable|image|mimes:jpeg,png,jpg,gif,ico,webp|max:1024',
             
             // SMTP Settings
@@ -65,13 +64,6 @@ class SettingController extends Controller
                 \Illuminate\Support\Facades\Storage::disk('public')->delete($setting->logo);
             }
             $validated['logo'] = $request->file('logo')->store('settings', 'public');
-        }
-
-        if ($request->hasFile('monogram')) {
-            if ($setting->monogram) {
-                \Illuminate\Support\Facades\Storage::disk('public')->delete($setting->monogram);
-            }
-            $validated['monogram'] = $request->file('monogram')->store('settings', 'public');
         }
 
         if ($request->hasFile('favicon')) {
