@@ -21,5 +21,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Create default settings
+        \App\Models\Setting::updateOrCreate(
+            ['id' => 1],
+            [
+                'site_name' => 'eClothing',
+                'site_email' => 'info@eclothing.com',
+                'site_phone' => '03001234567',
+                'site_address' => 'Bahawalpur, Punjab, Pakistan',
+            ]
+        );
     }
 }
