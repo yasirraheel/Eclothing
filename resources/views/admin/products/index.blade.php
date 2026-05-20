@@ -36,7 +36,7 @@
                         <tr>
                             <td class="col-image">
                                 @if($product->image)
-                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-img">
+                                    <img src="{{ asset('storage/' . $product->image) }}?v={{ time() }}" alt="{{ $product->name }}" class="product-img">
                                 @else
                                     <div class="product-img" style="background-color: #e5e7eb; display:flex; align-items:center; justify-content:center; color: #9ca3af;">
                                         <i class="fa-solid fa-image"></i>
