@@ -84,26 +84,44 @@
                         </div>
                     </div>
 
+
                     <div class="grid-2">
                         <div class="form-group">
                             <label for="logo" class="form-label">Site Logo</label>
                             @if(isset($setting->logo) && $setting->logo)
-                                <div style="margin-bottom: 10px;">
-                                    <img src="{{ Storage::url($setting->logo) }}" alt="Logo" style="height: 50px;">
+                                <div style="margin-bottom: 10px; padding: 8px; background:#f8f9fa; border-radius:6px; display:inline-block;">
+                                    <img src="{{ Storage::url($setting->logo) }}" alt="Logo" style="height: 50px;" id="logo-preview">
+                                    <div style="font-size:11px; color:#666; margin-top:4px;">Current Logo</div>
                                 </div>
+                            @else
+                                <img id="logo-preview" src="#" style="height:50px; display:none; margin-bottom:8px; border-radius:4px;">
                             @endif
-                            <input type="file" id="logo" name="logo" class="form-control" accept="image/*">
+                            <input type="file" id="logo" name="logo" class="form-control" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg+xml,image/webp"
+                                onchange="previewImage(this, 'logo-preview')">
+                            <div style="font-size:11px; color:#888; margin-top:4px;">Accepted: JPG, PNG, GIF, SVG, WEBP (max 2MB)</div>
+                            @error('logo')
+                                <div style="color:#dc3545; font-size:13px; margin-top:5px;"><i class="fa-solid fa-circle-exclamation"></i> {{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="favicon" class="form-label">Favicon</label>
                             @if(isset($setting->favicon) && $setting->favicon)
-                                <div style="margin-bottom: 10px;">
-                                    <img src="{{ Storage::url($setting->favicon) }}" alt="Favicon" style="height: 32px;">
+                                <div style="margin-bottom: 10px; padding: 8px; background:#f8f9fa; border-radius:6px; display:inline-block;">
+                                    <img src="{{ Storage::url($setting->favicon) }}" alt="Favicon" style="height: 32px;" id="favicon-preview">
+                                    <div style="font-size:11px; color:#666; margin-top:4px;">Current Favicon</div>
                                 </div>
+                            @else
+                                <img id="favicon-preview" src="#" style="height:32px; display:none; margin-bottom:8px;">
                             @endif
-                            <input type="file" id="favicon" name="favicon" class="form-control" accept="image/x-icon,image/png">
+                            <input type="file" id="favicon" name="favicon" class="form-control" accept="image/x-icon,image/png,image/jpeg,image/gif,image/svg+xml,image/webp,.ico"
+                                onchange="previewImage(this, 'favicon-preview')">
+                            <div style="font-size:11px; color:#888; margin-top:4px;">Accepted: ICO, PNG, JPG, GIF, WEBP (max 1MB)</div>
+                            @error('favicon')
+                                <div style="color:#dc3545; font-size:13px; margin-top:5px;"><i class="fa-solid fa-circle-exclamation"></i> {{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
+
                 </div>
 
                 <!-- SMTP TAB -->
@@ -239,6 +257,18 @@
             const wrapper = document.getElementById(name + '_wrapper');
             if (wrapper) {
                 wrapper.style.display = checkbox.checked ? 'block' : 'none';
+            }
+        }
+
+        function previewImage(input, previewId) {
+            const preview = document.getElementById(previewId);
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(input.files[0]);
             }
         }
     </script>

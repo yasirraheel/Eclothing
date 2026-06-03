@@ -22,8 +22,8 @@ class SettingController extends Controller
             'site_email' => 'nullable|email|max:255',
             'site_phone' => 'nullable|string|max:255',
             'site_address' => 'nullable|string',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'favicon' => 'nullable|image|mimes:jpeg,png,jpg,gif,ico,webp|max:1024',
+            'logo' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'favicon' => 'nullable|file|mimes:jpeg,png,jpg,gif,ico,svg,webp|max:1024',
             
             // SMTP Settings
             'smtp_host' => 'nullable|string|max:255',
@@ -60,20 +60,32 @@ class SettingController extends Controller
         $validated['pm_jazzcash']  = $request->has('pm_jazzcash') ? 1 : 0;
         $validated['pm_easypaisa'] = $request->has('pm_easypaisa') ? 1 : 0;
 
-        if ($request->hasFile('logo')) {
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
             if ($setting->logo) {
                 Storage::disk('public')->delete($setting->logo);
             }
             Storage::disk('public')->makeDirectory('settings');
-            $validated['logo'] = $request->file('logo')->store('settings', 'public');
+            $path = $request->file('logo')->store('settings', 'public');
+            if ($path) {
+                $validated['logo'] = $path;
+            }
+        } else {
+            // Keep existing logo if no new file uploaded
+            unset($validated['logo']);
         }
 
-        if ($request->hasFile('favicon')) {
+        if ($request->hasFile('favicon') && $request->file('favicon')->isValid()) {
             if ($setting->favicon) {
                 Storage::disk('public')->delete($setting->favicon);
             }
             Storage::disk('public')->makeDirectory('settings');
-            $validated['favicon'] = $request->file('favicon')->store('settings', 'public');
+            $path = $request->file('favicon')->store('settings', 'public');
+            if ($path) {
+                $validated['favicon'] = $path;
+            }
+        } else {
+            // Keep existing favicon if no new file uploaded
+            unset($validated['favicon']);
         }
 
         $setting->fill($validated);
