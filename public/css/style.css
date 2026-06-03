@@ -198,6 +198,14 @@ body {
     filter: brightness(0) invert(1);
 }
 
+.logo-text {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+}
+
 /* Search — Amazon style */
 .search-box {
     flex-grow: 1;

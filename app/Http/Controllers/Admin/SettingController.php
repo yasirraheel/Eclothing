@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
@@ -61,15 +62,17 @@ class SettingController extends Controller
 
         if ($request->hasFile('logo')) {
             if ($setting->logo) {
-                \Illuminate\Support\Facades\Storage::disk('public')->delete($setting->logo);
+                Storage::disk('public')->delete($setting->logo);
             }
+            Storage::disk('public')->makeDirectory('settings');
             $validated['logo'] = $request->file('logo')->store('settings', 'public');
         }
 
         if ($request->hasFile('favicon')) {
             if ($setting->favicon) {
-                \Illuminate\Support\Facades\Storage::disk('public')->delete($setting->favicon);
+                Storage::disk('public')->delete($setting->favicon);
             }
+            Storage::disk('public')->makeDirectory('settings');
             $validated['favicon'] = $request->file('favicon')->store('settings', 'public');
         }
 

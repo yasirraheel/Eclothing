@@ -32,9 +32,8 @@
             <a href="{{ route('home') }}" class="logo">
                 @if($setting && $setting->logo)
                     <img src="{{ Storage::url($setting->logo) }}" alt="{{ $setting->site_name ?? 'Logo' }}">
-                @else
-                    {{ $setting->site_name ?? 'Eclothing' }}
                 @endif
+                <span class="logo-text">{{ $setting->site_name ?? 'eClothing' }}</span>
             </a>
 
             <form action="{{ route('home') }}" method="GET" class="search-box">
