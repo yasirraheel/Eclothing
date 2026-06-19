@@ -13,7 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Dashboard - {{ $setting->site_name ?? 'Eclothing' }}</title>
     @if($setting && $setting->favicon)
-        <link rel="icon" href="{{ Storage::url($setting->favicon) }}" type="image/x-icon">
+        <link rel="icon" href="{{ Storage::url($setting->favicon) }}" type="image/png">
+    @else
+        <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
     @endif
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

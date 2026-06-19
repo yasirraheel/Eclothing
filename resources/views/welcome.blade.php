@@ -11,7 +11,9 @@
     <meta name="keywords" content="{{ $setting->seo_keywords ?? '' }}">
     
     @if($setting && $setting->favicon)
-        <link rel="icon" href="{{ Storage::url($setting->favicon) }}" type="image/x-icon">
+        <link rel="icon" href="{{ Storage::url($setting->favicon) }}" type="image/png">
+    @else
+        <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
     @endif
 
     <!-- Fonts -->

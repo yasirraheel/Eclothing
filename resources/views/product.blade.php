@@ -7,7 +7,9 @@
     <title>{{ $product->name }} - {{ $setting->site_name ?? config('app.name') }}</title>
     
     @if($setting && $setting->favicon)
-        <link rel="icon" href="{{ Storage::url($setting->favicon) }}" type="image/x-icon">
+        <link rel="icon" href="{{ Storage::url($setting->favicon) }}" type="image/png">
+    @else
+        <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
     @endif
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
